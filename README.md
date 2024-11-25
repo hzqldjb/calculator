@@ -35,3 +35,76 @@ A simple and extensible calculator API built using Spring Boot that adheres to k
     "num1": 10,
     "num2": 5
   }
+- **Response**:
+  ```json
+  {
+  "result": 15
+  }
+
+
+## Supported Operations:
+ADD
+SUBTRACT
+MULTIPLY
+DIVIDE
+
+### **2. Perform a Chained Calculation**
+
+- **Endpoint**: `/api/chain`
+- **Method**: `POST`
+- **Request**:
+  ```json
+  {
+  "initialValue": 10,
+  "operations": ["ADD", "MULTIPLY"],
+  "operands": [5, 2]
+  }
+- **Response**:
+  ```json
+  {
+  "result": 30
+  }
+
+
+## Validation
+- **The operation field must be one of the supported operations: ADD, SUBTRACT, MULTIPLY, DIVIDE.**
+- **Division by zero is not allowed and will return a 400 Bad Request with an error message.**
+
+## Global Exception Handling
+- **Invalid Operations: Returns a 400 Bad Request with a meaningful error message.**
+- **Division by Zero: Returns a 400 Bad Request with a message: Division by zero is not allowed.**
+- **Generic Errors: Returns a 500 Internal Server Error with a standard error message.**
+
+## Setup and Run
+- Prerequisites
+- **JDK 17 or higher**
+- **Maven**
+- **Postman (optional for API testing)** 
+- **Clone the repository:**
+bash
+Copy code
+git clone https://github.com/hzqldjb/calculator.git
+- **Build the project:**
+bash
+Copy code
+mvn clean install
+- **Run the application:**
+bash
+Copy code
+mvn spring-boot:run
+Access the API at http://localhost:8080/api.
+## Testing
+- Unit Tests
+- The project includes unit tests for service and controller layers.
+- **Run tests with:**
+bash
+Copy code
+mvn test
+## Postman Testing
+- **Import the provided Postman collection (if available).**
+- **Test endpoints directly via Postman.**
+## Future Improvements
+- Add support for advanced mathematical operations (e.g., exponentiation, square root).
+- Implement user authentication and role-based access.
+- Enhance logging for better traceability.
+
